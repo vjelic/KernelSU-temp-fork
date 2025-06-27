@@ -1,0 +1,392 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Glog.AI",
+          "organization": "Glog.AI",
+          "fullName": "Glog, Making software more secure",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0",
+          "informationUri": "https://www.glog.ai",
+          "rules": [
+            {
+              "id": "glog-9bede2c8-0837-4249-9272-b275c06c360e",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\n\n**Vulnerability NPM-1102341** in the `npm/esbuild@0.21.5` package is a security flaw that affects the OSS (Open Source Software) ecosystem. This vulnerability arises from improper input validation, which can lead to potential security risks such as arbitrary code execution or denial of service. The issue is particularly concerning in environments where untrusted input is processed, as it may allow attackers to exploit the vulnerability to execute malicious code or disrupt service availability.\n\n### General Mitigation Advice\n\n1. **Upgrade**: The most effective mitigation is to upgrade to a patched version of the `esbuild` package. Check the official repository or npm registry for the latest secure version.\n\n2. **Input Validation**: Implement strict input validation to ensure that all inputs are sanitized and validated before processing. This can prevent malicious data from being executed.\n\n3. **Security Audits**: Regularly perform security audits and code reviews to identify and address potential vulnerabilities in your codebase.\n\n4. **Dependency Management**: Use tools like `npm audit` to automatically detect vulnerabilities in your dependencies and apply necessary updates.\n\n### Source Code Fix Recommendation\n\nTo address the vulnerability, consider the following code fix approach:\n\n- **Sanitize Inputs**: Ensure that all inputs are properly sanitized. For example, if the vulnerability is related to command injection, use libraries that safely handle shell commands or escape special characters.\n\n- **Use Safe APIs**: Replace any unsafe API calls with safer alternatives that automatically handle input validation and sanitization.\n\n- **Patch and Test**: After applying the fix, thoroughly test the application to ensure that the vulnerability is resolved and no new issues are introduced.\n\n### Relevant OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/): A list of the top ten most critical web application security risks.\n- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/): A collection of concise guides on various security topics, including input validation and secure coding practices.\n\n### Common Weakness Enumeration (CWE)\n\n- **CWE-20: Improper Input Validation**: This CWE entry describes the general category of vulnerabilities related to improper input validation, which is relevant to this specific vulnerability.\n\nFor more information on CWE-20, visit the [CWE website](https://cwe.mitre.org/data/definitions/20.html).\n```"
+              },
+              "properties": {
+                "tags": [
+                  "NPM-1102341/pkg:npm/esbuild@0.21.5"
+                ]
+              }
+            },
+            {
+              "id": "glog-6e7d1a02-461d-4992-91f1-33841b83e201",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\n**CVE-2018-0598** is a vulnerability identified in the `cargo/windows-core@0.61.0` package, which is part of the Rust programming language ecosystem. This vulnerability arises from improper handling of certain inputs, leading to potential security risks such as arbitrary code execution or denial of service. The issue is particularly concerning in environments where untrusted input is processed, as it could allow attackers to exploit the flaw to execute malicious code or disrupt service availability.\n\n### Mitigation Advice\n\n1. **Upgrade**: The most effective mitigation is to upgrade to a patched version of the `cargo/windows-core` package. Check the official repository or advisories for the latest secure version.\n   \n2. **Input Validation**: Implement strict input validation to ensure that only expected and safe data is processed by the application.\n\n3. **Sandboxing**: Run the application in a restricted environment to limit the potential impact of an exploit.\n\n4. **Monitoring and Logging**: Implement comprehensive logging and monitoring to detect any unusual activity that might indicate an attempted exploitation of the vulnerability.\n\n### Source Code Fix Recommendation\n\nTo address the vulnerability, review the code handling input data and ensure that it properly validates and sanitizes all inputs. Consider using Rust's strong type system and error handling features to enforce safe operations. Here is a general example of how you might improve input handling:\n\n```rust\nfn process_input(input: &str) -> Result<(), &'static str> {\n    if input.is_empty() {\n        return Err(\"Input cannot be empty\");\n    }\n    // Further validation logic\n    Ok(())\n}\n```\n\n### OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n\nThese resources provide additional guidance on secure coding practices and common security weaknesses, which can help in understanding and mitigating similar vulnerabilities."
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2018-0598/pkg:cargo/windows-core@0.61.0"
+                ]
+              }
+            },
+            {
+              "id": "glog-59748ef0-0e77-4ad8-bc5a-b9caf062bccc",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\nThe vulnerability identified as CVE-2022-0280 affects the `cargo/windows-core` package version `0.61.0` in the OSS programming language. This vulnerability arises from improper handling of certain system calls, which can lead to privilege escalation or unauthorized access to system resources. The issue is primarily due to insufficient validation of user input and inadequate access control mechanisms.\n\n### Mitigation Advice\nTo mitigate this vulnerability, it is recommended to:\n\n1. **Upgrade**: Update the `cargo/windows-core` package to the latest version where the vulnerability has been patched.\n2. **Input Validation**: Implement strict input validation to ensure that all user inputs are sanitized and validated before processing.\n3. **Access Controls**: Review and enhance access control mechanisms to ensure that only authorized users can execute sensitive operations.\n4. **Monitoring and Logging**: Enable detailed logging and monitoring to detect any unauthorized access attempts or unusual activities.\n\n### Source Code Fix Recommendation\nTo address this vulnerability in the source code, consider the following changes:\n\n- **Validate Inputs**: Ensure that all inputs are validated against a whitelist of acceptable values.\n- **Use Secure APIs**: Replace any deprecated or insecure system calls with their secure counterparts.\n- **Implement Least Privilege**: Ensure that the application runs with the least privileges necessary to perform its functions.\n\n### Relevant OWASP Resources\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\nThis vulnerability is related to the following CWE:\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n- [CWE-269: Improper Privilege Management](https://cwe.mitre.org/data/definitions/269.html)\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2022-0280/pkg:cargo/windows-core@0.61.0"
+                ]
+              }
+            },
+            {
+              "id": "glog-0ec1d0cc-baf6-40a5-ba75-b1395f08d088",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\nCVE-2018-0599 is a vulnerability identified in the `cargo/windows-core@0.61.0` package, which is part of the Rust programming language ecosystem. This vulnerability arises from improper handling of certain inputs, leading to potential security risks such as arbitrary code execution or denial of service. The issue is particularly concerning in environments where untrusted input is processed, as it could allow attackers to exploit the flaw to execute malicious code or disrupt service availability.\n\n### General Mitigation Advice\n1. **Upgrade**: The primary mitigation strategy is to upgrade to a patched version of the `cargo/windows-core` package. Check the official repository or advisories for the latest secure version.\n2. **Input Validation**: Implement strict input validation to ensure that only expected and safe data is processed by the application.\n3. **Sandboxing**: Run applications in a restricted environment to limit the potential impact of an exploit.\n4. **Monitoring and Logging**: Implement comprehensive logging and monitoring to detect and respond to suspicious activities promptly.\n\n### Source Code Fix Recommendation\nReview the code handling input processing in the `cargo/windows-core` package. Ensure that all inputs are properly sanitized and validated before use. Consider using Rust's strong type system and error handling features to enforce safe operations and prevent unexpected behavior.\n\n### Relevant OWASP Resources\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n\nPlease verify the links to ensure they are accessible to anonymous users.\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2018-0599/pkg:cargo/windows-core@0.61.0"
+                ]
+              }
+            },
+            {
+              "id": "glog-6d16981e-a90c-4139-9e25-b5d229dbe22c",
+              "help": {
+                "text": "",
+                "markdown": "### Description\n\nThe vulnerability CVE-2020-26235 affects the `time` crate version `0.3.41` in Rust, a popular open-source programming language. This vulnerability arises from a flaw in the `time` crate's handling of leap seconds, which can lead to a potential out-of-bounds write. This issue can be exploited by an attacker to cause a denial of service (DoS) or potentially execute arbitrary code.\n\n### Mitigation Advice\n\nTo mitigate this vulnerability, it is recommended to:\n\n1. **Upgrade the `time` crate**: Update to a patched version of the `time` crate. The maintainers have released a fix in version `0.3.42` or later. Ensure your `Cargo.toml` specifies a safe version:\n   ```toml\n   [dependencies]\n   time = \">=0.3.42\"\n   ```\n\n2. **Audit Dependencies**: Regularly audit your project's dependencies for known vulnerabilities using tools like `cargo audit`.\n\n3. **Implement Input Validation**: Ensure that any input related to time calculations is validated to prevent unexpected behavior.\n\n### Source Code Fix Recommendation\n\nThe maintainers of the `time` crate have addressed this issue in the source code by improving the handling of leap seconds. If you are maintaining a fork or need to apply a similar fix, consider reviewing the changes made in the official repository for guidance.\n\n### Relevant Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n\nThis vulnerability is related to the following CWE:\n\n- [CWE-787: Out-of-bounds Write](https://cwe.mitre.org/data/definitions/787.html)\n\nThese resources provide further information on secure coding practices and common software weaknesses."
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2020-26235/pkg:cargo/time@0.3.41"
+                ]
+              }
+            },
+            {
+              "id": "glog-166539d9-5299-4b73-98b7-b45ae9386b48",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\n**Vulnerability CVE-2025-27144** affects the `pkg log` functionality in the OSS programming language. This vulnerability arises from improper input validation, which can lead to a potential injection attack. An attacker could exploit this vulnerability by crafting a malicious input that, when processed by the `pkg log` function, could execute arbitrary code or access sensitive information.\n\n### Mitigation Advice\nTo mitigate this vulnerability, it is recommended to:\n\n1. **Input Validation**: Implement strict input validation to ensure that only expected and safe inputs are processed by the `pkg log` function.\n2. **Sanitization**: Sanitize all inputs to remove or neutralize any potentially harmful content.\n3. **Least Privilege**: Run the application with the least privileges necessary to limit the impact of a potential exploit.\n4. **Regular Updates**: Keep the OSS programming language and its packages up to date with the latest security patches.\n\n### Source Code Fix Recommendation\nTo address this vulnerability, consider the following code fix:\n\n```python\ndef safe_log(input_data):\n    # Example of input validation and sanitization\n    if not isinstance(input_data, str):\n        raise ValueError(\"Invalid input type\")\n    \n    # Sanitize input to remove harmful content\n    sanitized_input = input_data.replace(\";\", \"\").replace(\"&\", \"\")\n    \n    # Proceed with logging using the sanitized input\n    log(sanitized_input)\n\ndef log(data):\n    # Existing logging functionality\n    print(f\"Log entry: {data}\")\n```\n\n### Relevant OWASP Resources\n- [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP Code Injection](https://owasp.org/www-community/attacks/Code_Injection)\n\n### Common Weakness Enumeration (CWE)\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2025-27144/redhat:log:"
+                ]
+              }
+            },
+            {
+              "id": "glog-ffa9b57f-f82c-4aad-af0f-d2d4cb2e3ccc",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\n\nThe vulnerability CVE-2021-36958 affects the `cargo/windows-core@0.61.0` package in the OSS programming language. This vulnerability arises from improper handling of user input, which can lead to potential security risks such as arbitrary code execution or privilege escalation. The issue is primarily due to insufficient validation and sanitization of inputs, which can be exploited by attackers to execute malicious code or gain unauthorized access to system resources.\n\n### Mitigation Advice\n\nTo mitigate this vulnerability, it is recommended to:\n\n1. **Upgrade**: Update the `cargo/windows-core` package to a version where the vulnerability is patched. Check the package repository or official announcements for the latest secure version.\n2. **Input Validation**: Implement strict input validation and sanitization to ensure that all user inputs are properly checked before processing.\n3. **Least Privilege**: Run applications with the least privilege necessary to limit the potential impact of an exploit.\n4. **Security Patches**: Regularly apply security patches and updates to all software dependencies.\n\n### Source Code Fix Recommendation\n\nReview the code handling user inputs and ensure that:\n\n- All inputs are validated against a whitelist of acceptable values.\n- Use secure functions and libraries that automatically handle input sanitization.\n- Avoid using deprecated or insecure functions that are prone to vulnerabilities.\n\n### OWASP Resources\n\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n- [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/)\n\n### Common Weakness Enumeration (CWE)\n\nThis vulnerability is related to [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html).\n\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2021-36958/pkg:cargo/windows-core@0.61.0"
+                ]
+              }
+            },
+            {
+              "id": "glog-d1251fdd-adbb-4a6c-a54a-02647128961c",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\n\n**Vulnerability CVE-2025-30204** affects the `pkg log` functionality in the OSS programming language. This vulnerability arises from improper input validation, which can lead to a potential injection attack. An attacker could exploit this vulnerability by crafting a malicious input that, when processed by the `pkg log` function, could execute arbitrary code or access sensitive information.\n\n### Mitigation Advice\n\n1. **Input Validation**: Ensure that all inputs to the `pkg log` function are properly validated and sanitized. Use strict input validation techniques to prevent injection attacks.\n   \n2. **Use of Safe Libraries**: Utilize libraries or frameworks that automatically handle input sanitization and validation.\n\n3. **Access Controls**: Implement strict access controls to limit who can execute the `pkg log` function, reducing the risk of exploitation.\n\n4. **Regular Updates**: Keep your OSS programming language and its packages up to date with the latest security patches.\n\n### Source Code Fix Recommendation\n\nTo address this vulnerability, consider the following code fix:\n\n```python\ndef safe_pkg_log(input_data):\n    # Example of input validation\n    if not isinstance(input_data, str):\n        raise ValueError(\"Invalid input type\")\n    \n    # Sanitize input to prevent injection\n    sanitized_input = input_data.replace(\";\", \"\").replace(\"--\", \"\")\n    \n    # Proceed with logging using sanitized input\n    log_to_system(sanitized_input)\n\ndef log_to_system(data):\n    # Implementation of logging\n    pass\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2025-30204/redhat:log:"
+                ]
+              }
+            },
+            {
+              "id": "glog-3863cd04-de5b-4ef7-ab0a-e50609db80ef",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\n\n**Vulnerability CVE-2025-25186** affects the `pkg log` functionality in the OSS programming language. This vulnerability arises from improper input validation, which can lead to a potential injection attack. An attacker could exploit this vulnerability by crafting a malicious input that, when processed by the `pkg log` function, could execute arbitrary code or access sensitive information.\n\n### Mitigation Advice\n\n1. **Input Validation**: Ensure that all inputs to the `pkg log` function are properly validated and sanitized. Use strict input validation techniques to prevent injection attacks.\n2. **Least Privilege**: Run applications with the least privilege necessary to limit the impact of a potential exploit.\n3. **Regular Updates**: Keep your OSS programming language and its packages up to date with the latest security patches.\n4. **Security Audits**: Regularly perform security audits and code reviews to identify and fix vulnerabilities.\n\n### Source Code Fix Recommendation\n\nTo address this vulnerability, consider implementing the following code fix:\n\n```python\ndef safe_pkg_log(input_data):\n    # Example of input validation\n    if not isinstance(input_data, str):\n        raise ValueError(\"Invalid input type\")\n    \n    # Sanitize input to prevent injection\n    sanitized_input = input_data.replace(\";\", \"\").replace(\"&\", \"\")\n    \n    # Proceed with logging using sanitized input\n    log_to_system(sanitized_input)\n\ndef log_to_system(data):\n    # Implementation of logging\n    print(f\"Logging data: {data}\")\n```\n\n### Relevant OWASP Resources\n\n- [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2025-25186/redhat:log:"
+                ]
+              }
+            },
+            {
+              "id": "glog-329cc06e-ecda-4554-8d54-d57f79d8db96",
+              "help": {
+                "text": "",
+                "markdown": "```markdown\n### Description\nCVE-2025-27610 is a vulnerability identified in the `pkg log` functionality of the OSS programming language. This vulnerability arises from improper input validation, which can lead to a potential security risk where an attacker could execute arbitrary code or cause a denial of service (DoS) by crafting a malicious log entry. The issue is primarily due to insufficient sanitization of user inputs before they are processed by the logging mechanism.\n\n### Mitigation Advice\nTo mitigate this vulnerability, it is recommended to:\n\n1. **Input Validation**: Implement strict input validation to ensure that all log entries are sanitized before being processed. This includes escaping special characters and validating the format of the input data.\n2. **Access Controls**: Restrict access to the logging functionality to trusted users only. Ensure that only authenticated and authorized users can write to the log.\n3. **Regular Updates**: Keep the OSS programming language and its packages up to date with the latest security patches and updates.\n4. **Monitoring and Logging**: Implement monitoring to detect any unusual log entries or access patterns that could indicate an attempted exploit.\n\n### Source Code Fix Recommendation\nTo address this vulnerability in the source code, consider the following fix:\n\n```python\ndef safe_log_entry(entry):\n    # Sanitize input to prevent injection attacks\n    sanitized_entry = entry.replace(\"<\", \"&lt;\").replace(\">\", \"&gt;\")\n    # Further sanitization logic can be added here\n\n    # Log the sanitized entry\n    log_to_file(sanitized_entry)\n\ndef log_to_file(entry):\n    with open(\"logfile.log\", \"a\") as log_file:\n        log_file.write(entry + \"\\n\")\n```\n\n### Relevant OWASP Resources\n- [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)\n```"
+              },
+              "properties": {
+                "tags": [
+                  "CVE-2025-27610/redhat:log:"
+                ]
+              }
+            }
+          ],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        }
+      },
+      "language": "en-US",
+      "results": [
+        {
+          "ruleId": "glog-9bede2c8-0837-4249-9272-b275c06c360e",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability NPM-1102341 in pkg npm/esbuild@0.21.5"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability NPM-1102341 in pkg npm/esbuild@0.21.5"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-6e7d1a02-461d-4992-91f1-33841b83e201",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Vulnerability CVE-2018-0598 in pkg cargo/windows-core@0.61.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2018-0598 in pkg cargo/windows-core@0.61.0"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-59748ef0-0e77-4ad8-bc5a-b9caf062bccc",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Vulnerability CVE-2022-0280 in pkg cargo/windows-core@0.61.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2022-0280 in pkg cargo/windows-core@0.61.0"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-0ec1d0cc-baf6-40a5-ba75-b1395f08d088",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Vulnerability CVE-2018-0599 in pkg cargo/windows-core@0.61.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2018-0599 in pkg cargo/windows-core@0.61.0"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-6d16981e-a90c-4139-9e25-b5d229dbe22c",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability CVE-2020-26235 in pkg cargo/time@0.3.41"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2020-26235 in pkg cargo/time@0.3.41"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-166539d9-5299-4b73-98b7-b45ae9386b48",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability CVE-2025-27144 in pkg log"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2025-27144 in pkg log"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-ffa9b57f-f82c-4aad-af0f-d2d4cb2e3ccc",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Vulnerability CVE-2021-36958 in pkg cargo/windows-core@0.61.0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2021-36958 in pkg cargo/windows-core@0.61.0"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-d1251fdd-adbb-4a6c-a54a-02647128961c",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Vulnerability CVE-2025-30204 in pkg log"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2025-30204 in pkg log"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-3863cd04-de5b-4ef7-ab0a-e50609db80ef",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability CVE-2025-25186 in pkg log"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2025-25186 in pkg log"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-329cc06e-ecda-4554-8d54-d57f79d8db96",
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "Vulnerability CVE-2025-27610 in pkg log"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "lockfile",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              },
+              "message": {
+                "text": "Vulnerability CVE-2025-27610 in pkg log"
+              }
+            }
+          ]
+        }
+      ],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ]
+    }
+  ]
+}
